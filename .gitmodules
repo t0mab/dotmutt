@@ -1,0 +1,3 @@
+[submodule "vombatidae-mutt"]
+	path = vombatidae-mutt
+	url = https://github.com/octol/vombatidae-mutt

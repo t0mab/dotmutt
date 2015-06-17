@@ -1,0 +1,64 @@
+## Sort
+# Sort mails by thread and reverse date by default.
+set sort=threads
+set sort_aux=reverse-last-date-received
+
+# Sort folders browser alphabetically.
+set sort_browser=alpha
+
+## Bindings
+# Refresh mails
+bind index "+" imap-fetch-mail
+
+# Allow arrows in pager.
+bind pager <Up> previous-line
+bind pager <Down> next-line
+
+# Sorting shortcuts.
+macro index "xd" "<enter-command>set sort=reverse-last-date-received<enter>" "No thread view, sorting by reverse date"
+macro index "xt" "<enter-command>set sort=threads<enter>" "Thread view, sorting by reverse date"
+
+### Multi mailbox configuration
+## Personal account.
+folder-hook 'gmail.com' 'source ~/.config/mutt/gmail.muttrc'
+
+#
+## Work account.
+source ~/.config/mutt/unistra.muttrc
+folder-hook 'mailserver.u-strasbg.fr' 'source ~/.config/mutt/unistra.muttrc'
+#
+macro index,pager <F2> '<enter-command>source ~/.config/mutt/unistra.muttrc<enter><change-folder>!<enter>'
+macro index,pager <F3> '<enter-command>source ~/.config/mutt/gmail.muttrc<enter><change-folder>!<enter>'
+
+macro pager \Cu "|urlview<enter>" "call urlview to open links"
+
+source ~/.config/mutt/vombatidae-mutt/vombatidae.mutt
+
+set date_format="%d/%m/%Y - %H:%M:%S"
+
+#set locale="fr_FR"
+
+set attribution="Le %d, %n a écrit :"
+
+set forward_format="[Fwd: %s]"
+
+set forward_quote
+
+set index_format        = "[%Z]  %D  %-20.20F  %s"
+
+auto_view text/html
+alternative_order text/calendar text/plain text/enriched text/html
+
+set smime_keys="~/.smime/keys"
+set smime_certificates="~/.smime/certificates"
+set smime_ca_location="~/.smime/certificates"
+
+set ispell="aspell -e -c"
+
+set editor = "vim -c 'set tw=72' -c 'set wrap' -c 'set spell' -c 'set filetype=mail'"
+
+bind editor <tab> complete-query
+
+set send_charset="utf-8"
+
+#set print_command="/usr/bin/muttprint %s -p {PrinterName}"

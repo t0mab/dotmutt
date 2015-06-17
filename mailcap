@@ -1,0 +1,29 @@
+#text/html;                      ~/.config/mutt/view_attachment.sh %s html
+#text/html;                      elinks %s; nametemplate=%s.html
+#text/html;                      elinks -dump %s; nametemplate=%s.html; copiousoutput
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
+# Images
+image/jpg; ~/.config/mutt/view_attachment.sh %s jpg
+image/jpeg; ~/.config/mutt/view_attachment.sh %s jpg
+image/pjpeg; ~/.config/mutt/view_attachment.sh %s jpg
+image/png; ~/.config/mutt/view_attachment.sh %s png
+image/gif; ~/.config/mutt/view_attachment.sh %s gif
+image/tiff; ~/.config/mutt/view_attachment.sh %s gif
+
+# PDF
+application/pdf; ~/.config/mutt/view_attachment.sh %s pdf
+application/x-latex; ~/.config/mutt/view_attachment.sh %s pdf
+
+# Unidentified.
+application/octet-stream; ~/.config/mutt/view_attachment.sh %s "-" 
+
+# MS Excel
+application/x-msexcel; ~/.config/mutt/view_attachment.sh %s xls
+application/ms-exc; ~/.config/mutt/view_attachment.sh %s xls
+application/excel; ~/.config/mutt/view_attachment.sh %s xls
+application/msexcel; ~/.config/mutt/view_attachment.sh %s xls
+application/vnd.ms-exc; ~/.config/mutt/view_attachment.sh %s xls
+application/vnd.ms-excel; ~/.config/mutt/view_attachment.sh %s xls
+
+# MS Word
+application/msword; ~/.config/mutt/view_attachment.sh %s doc
