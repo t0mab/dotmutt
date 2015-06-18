@@ -13,7 +13,7 @@ unset smime_ask_cert_label
 set smime_timeout=300
 
 # Global crypto options -- these affect PGP operations as well.
-set crypt_autosign = yes 
+set crypt_autosign = yes
 set crypt_replyencrypt = yes
 set crypt_replysign = yes
 set crypt_replysignencrypted = yes
@@ -23,7 +23,7 @@ set crypt_verify_sig = yes
 
 # The (default) keyfile for signing/decrypting.  Uncomment the following
 # line and replace the keyid with your own.
-set smime_default_key="c500f047.0"
+set smime_default_key="c500f047.1"
 
 # Uncommen to make mutt ask what key to use when trying to decrypt a message.
 # It will use the default key above (if that was set) else.
@@ -66,9 +66,9 @@ set smime_encrypt_with="des3"
 set smime_encrypt_command="openssl smime -encrypt -%a -outform DER -in %f %c"
 
 # Sign.
-set smime_sign_command="openssl smime -sign -signer %c -inkey %k -passin stdin -in %f -certfile %i -outform DER"
-
-
+#set smime_sign_command="openssl smime -sign -signer %c -inkey %k -passin stdin -in %f -certfile %i -outform DER"
+# see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=741147
+set smime_sign_command="openssl smime -sign -md SHA1 -signer %c -inkey %k -passin stdin -in %f -certfile %i -outform DER"
 
 #Section C: Incoming messages
 
