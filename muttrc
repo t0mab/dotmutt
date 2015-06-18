@@ -22,63 +22,87 @@ macro index "xt" "<enter-command>set sort=threads<enter>" "Thread view, sorting 
 ## Personal account.
 folder-hook 'gmail.com' 'source ~/.config/mutt/gmail.muttrc'
 
-#
 ## Work account.
 source ~/.config/mutt/unistra.muttrc
 folder-hook 'mailserver.u-strasbg.fr' 'source ~/.config/mutt/unistra.muttrc'
-#
+
+# Switch accounts
 macro index,pager <F2> '<enter-command>source ~/.config/mutt/unistra.muttrc<enter><change-folder>!<enter>'
 macro index,pager <F3> '<enter-command>source ~/.config/mutt/gmail.muttrc<enter><change-folder>!<enter>'
 
-macro pager \Cu "|urlview<enter>" "call urlview to open links"
+# View url with fav browser
+macro pager \cu <pipe-entry>'urlview'<enter> 'Follow links with urlview'
+macro attach 'V' "<pipe-entry>cat >~/.config/mutt/.cache/mutt/mail.html && chromium ~/.cache/mutt/mail.html && rm ~/.cache/mutt/mail.html<enter>"
 
+# Mutt color vombatidae theme
 source ~/.config/mutt/vombatidae-mutt/vombatidae.mutt
 
+# Date formatting
 set date_format="%d/%m/%Y - %H:%M:%S"
 
 #set locale="fr_FR"
 
+# Default charset
 set charset = "utf-8"
 
+#
 set rfc2047_parameters
 
+#
 charset-hook ^iso-8859-1$ cp1252
 
+# When replying to an email
 set attribution="Le %d, %n a écrit :"
 
+# Forward formatting
 set forward_format="[Fwd: %s]"
 
+# 
 set forward_quote
 
+# Index formatting
 set index_format        = "[%Z]  %D  %-20.20F  %s"
 
+#
 set followup_to = no
 
+#
 set honor_followup_to = no
 
+#
 unset mark_old
 
+#
 set markers = no
 
+# Spam management
 spam "X-Spam-Status: (Yes|No), score=([0-9\.-]+)"   "%2"
 
-auto_view text/html
+# Auto view html
+set implicit_autoview
+auto_view text/html application/x-pgp-message
 alternative_order text/calendar text/plain text/enriched text/html
 
+# Smime part
 set smime_keys="~/.smime/keys"
 set smime_certificates="~/.smime/certificates"
 set smime_ca_location="~/.smime/certificates"
 
+# Spell checker
 set ispell="aspell -e -c"
 
-set editor = "vim -c 'set tw=72' -c 'set wrap' -c 'set spell' -c 'set filetype=mail'"
+# Vim is the man
+set editor = "vim -c 'set tw=72' -c 'set wrap' -c 'set spelllang=fr' -c 'set filetype=mail'"
 
+# Completion with tab key
 bind editor <tab> complete-query
 
 #set send_charset="utf-8"
 
+# Print command
 #set print_command="/usr/bin/muttprint %s -p {PrinterName}"
 
+# Headers management
 unhdr_order *
 hdr_order from to cc date reply-to list-id subject
 ignore *
@@ -86,3 +110,6 @@ unignore from date subject to cc reply-to list-id
 
 set use_from = yes
 set use_envelope_from = yes
+
+# Mailcap
+set mailcap_path = ~/.config/mutt/mailcap

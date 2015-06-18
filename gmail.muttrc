@@ -26,20 +26,45 @@ set imap_check_subscribed
 # Store message headers locally to speed things up.
 set header_cache = ~/.config/mutt/cache/mutt
 
+# Mail signature
+set signature = ~/Maintenance/sig/.signature.gmail
+
+
 # Allow mutt to open new imap connection automatically.
 unset imap_passive
 
 # How often to check for new mail
-set mail_check = 60
+set mail_check = 120 
 set timeout = 15
+
+# Keep IMAP connection alive by polling intermittently (time in seconds).
+set imap_keepalive = 300
 
 ## SMTP configuration.
 set my_name         = "Thomas BAGUET"
 set smtp_url        = "smtps://$my_smtp_user:$my_smtp_pass@$my_smtp_server"
 set ssl_force_tls   = yes
 
-
 ## Goobook (Google contacts)
 set query_command = "goobook query '%s'"
 bind editor <Tab> complete-query
 macro index,pager a "<pipe-message>goobook add<return>" "Add contact to Google"
+
+## Pgp stuff
+set pgp_decode_command="gpg %?p?--passphrase-fd 0? --no-verbose --batch --output - %f"
+set pgp_verify_command="gpg --no-verbose --batch --output - --verify %s %f"
+set pgp_decrypt_command="gpg --passphrase-fd 0 --no-verbose --batch --output - %f"
+set pgp_sign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --detach-sign --textmode %?a?-u %a? %f"
+set pgp_clearsign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --textmode --clearsign %?a?-u %a? %f"
+set pgp_encrypt_only_command="pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust --encrypt-to 0xC9C40C31 -- -r %r -- %f"
+set pgp_encrypt_sign_command="pgpewrap gpg --passphrase-fd 0 --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust --encrypt-to 0xC9C40C31 -- -r %r -- %f"
+set pgp_import_command="gpg --no-verbose --import -v %f"
+set pgp_export_command="gpg --no-verbose --export --armor %r"
+set pgp_verify_key_command="gpg --no-verbose --batch --fingerprint --check-sigs %r"
+set pgp_list_pubring_command="gpg --no-verbose --batch --with-colons --list-keys %r" 
+set pgp_list_secring_command="gpg --no-verbose --batch --with-colons --list-secret-keys %r" 
+set pgp_autosign=yes
+set pgp_sign_as=85D0BDC7
+set pgp_replyencrypt=yes
+set pgp_timeout=1800
+set pgp_good_sign="^gpg: Good signature from"

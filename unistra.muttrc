@@ -41,7 +41,8 @@ set my_name         = "Thomas BAGUET"
 set smtp_url        = "smtps://$my_user:$my_pass@$my_server"
 set ssl_force_tls   = yes
 
-source ~/.config/mutt/smime.rc
+
+#source ~/.config/mutt/smime.rc
 
 set signature="~/Maintenance/sig/.signature"
 # Call LDAP of Unistra
