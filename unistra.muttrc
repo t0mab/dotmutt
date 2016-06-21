@@ -8,10 +8,9 @@ source "gpg -dq ~/.config/mutt/unistra.passwords.gpg |"
 
 
 ## IMAP configuration.
+set realname        = "Thomas Baguet"
 set from            = "$my_user@unistra.fr"
 set folder          = "imaps://$my_user@$my_server"
-#set imap_user       = $my_user
-#set imap_pass       = $my_pass
 account-hook mailserver.u-strasbg.fr  "set imap_user='$my_user'"
 account-hook mailserver.u-strasbg.fr  "set imap_pass='$my_pass'"
 
@@ -41,18 +40,20 @@ set my_name         = "Thomas BAGUET"
 set smtp_url        = "smtps://$my_user:$my_pass@$my_server"
 set ssl_force_tls   = yes
 
+# Configure smime
+source ~/.config/mutt/smime.rc
 
-#source ~/.config/mutt/smime.rc
-
+# Use signature
 set signature="~/Maintenance/sig/.signature"
-# Call LDAP of Unistra
+
+# Query unistra ldap 
 set query_command = "~/.config/mutt/unistra_query_command.sh '%s'"
 
 ## Aliases
 source ~/.config/mutt/unistra.aliases
 
 # Switch entre adresses de départ
-alias identity_unistra_1  Thomas Baguet   <baguet@unistra.fr>
+alias identity_unistra_1  Thomas Baguet <baguet@unistra.fr>
 alias identity_unistra_2  Direction informatique <support@unistra.fr>
-macro compose v "<edit-from>^Uidentity_unistra_<tab>" "Select from"
+#macro compose v "<edit-from>^Uidentity_unistra_<tab>" "Select from"
 macro index,pager <esc>s "<tag-prefix><clear-flag>N<tag-prefix><save-message>=INBOX.Spam<enter><enter>"

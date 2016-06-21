@@ -3,6 +3,9 @@ set my_server       = "imap.gmail.com"
 set my_user         = "thomas.baguet@gmail.com" 
 source "gpg -dq ~/.config/mutt/gmail.passwords.gpg |"
 
+# don't record sent mail, Gmail does this
+unset record
+
 set my_smtp_user    = "baguet"
 set my_smtp_server  = "mailserver.u-strasbg.fr"
 

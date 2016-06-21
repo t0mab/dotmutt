@@ -1,7 +1,8 @@
 #text/html;                      ~/.config/mutt/view_attachment.sh %s html
 #text/html;                      elinks %s; nametemplate=%s.html
 #text/html;                      elinks -dump %s; nametemplate=%s.html; copiousoutput
-text/html; w3m -I %{charset} -T text/html; copiousoutput;
+text/html; chromium %s & sleep 5; test=RunningX;
+text/html; w3m -I %{charset} -T text/html; nametemplate=%s.html; copiousoutput;
 # Images
 image/jpg; ~/.config/mutt/view_attachment.sh %s jpg
 image/jpeg; ~/.config/mutt/view_attachment.sh %s jpg
