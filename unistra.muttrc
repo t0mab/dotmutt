@@ -6,7 +6,6 @@ set my_user         = "baguet"
 ## Encrypted password
 source "gpg -dq ~/.config/mutt/unistra.passwords.gpg |"
 
-
 ## IMAP configuration.
 set realname        = "Thomas Baguet"
 set from            = "$my_user@unistra.fr"

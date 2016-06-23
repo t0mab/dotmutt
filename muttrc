@@ -26,6 +26,9 @@ bind pager <Down> next-line
 macro index "xd" "<enter-command>set sort=reverse-last-date-received<enter>" "No thread view, sorting by reverse date"
 macro index "xt" "<enter-command>set sort=threads<enter>" "Thread view, sorting by reverse date"
 
+# Sources general common aliases
+source ~/.config/mutt/general.aliases
+
 ### Multi mailbox configuration
 ## Personal account.
 folder-hook 'gmail.com' 'source ~/.config/mutt/gmail.muttrc'
@@ -106,7 +109,9 @@ set ispell="aspell -e -c"
 set editor = "vim -c 'set tw=72' -c 'set wrap' -c 'set spelllang=fr' -c 'set filetype=mail'"
 
 # Completion with tab key
-bind editor <tab> complete-query
+bind editor <tab> complete
+# Query command with control+t
+bind editor ^T complete-query
 
 # Print command
 #set print_command="/usr/bin/muttprint %s -p {PrinterName}"
@@ -129,7 +134,9 @@ set indent_string="> "
 
 set status_format="%_h:  [%r]  %f [total:%?M?%M/?%m%?n? new:%n?%?o? old:%o?%?d? del:%d?%?F? flag:%F?%?t? tag:%t?%?p? post:%p?%?b? inc:%b?%?l? %l?]       (%s/%S)%> [%P]   "
 
-
+# Hook for mail without sig
+send-hook @boards.trello.com   'set signature=""'
+send-hook @boards.trello.com   'set crypt_autosign=no'
 # Notmuch search
 #macro index / "<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter>\
 #               <shell-escape>notmuch-mutt -r --prompt search<enter>\
