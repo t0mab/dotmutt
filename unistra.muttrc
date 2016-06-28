@@ -56,3 +56,4 @@ alias identity_unistra_1  Thomas Baguet <baguet@unistra.fr>
 alias identity_unistra_2  Direction informatique <support@unistra.fr>
 #macro compose v "<edit-from>^Uidentity_unistra_<tab>" "Select from"
 macro index,pager <esc>s "<tag-prefix><clear-flag>N<tag-prefix><save-message>=INBOX.Spam<enter><enter>"
+# vim: filetype=muttrc 

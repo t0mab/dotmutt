@@ -143,3 +143,5 @@ send-hook @boards.trello.com   'set crypt_autosign=no'
 #               <change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>\
 #               <enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
 #               "notmuch: search mail"
+#
+# vim: filetype=muttrc 
