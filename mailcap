@@ -4,19 +4,26 @@
 text/html; chromium %s & sleep 5; test=RunningX;
 text/html; w3m -I %{charset} -T text/html; nametemplate=%s.html; copiousoutput;
 # Images
-image/jpg; ~/.config/mutt/view_attachment.sh %s jpg
-image/jpeg; ~/.config/mutt/view_attachment.sh %s jpg
-image/pjpeg; ~/.config/mutt/view_attachment.sh %s jpg
-image/png; ~/.config/mutt/view_attachment.sh %s png
-image/gif; ~/.config/mutt/view_attachment.sh %s gif
-image/tiff; ~/.config/mutt/view_attachment.sh %s gif
+#image/jpg; ~/.config/mutt/view_attachment.sh %s jpg
+#image/jpeg; ~/.config/mutt/view_attachment.sh %s jpg
+#image/pjpeg; ~/.config/mutt/view_attachment.sh %s jpg
+#image/png; ~/.config/mutt/view_attachment.sh %s png
+#image/gif; ~/.config/mutt/view_attachment.sh %s gif
+#image/tiff; ~/.config/mutt/view_attachment.sh %s gif
+image/jpeg; feh -F --draw-exif %s
+image/jpg; feh -F --draw-exif %s
+image/png; feh -F --draw-exif %s
+image/jgpeg; feh -F --draw-exif %s
+image/gif; feh -F --draw-exif %s
+image/tiff; feh -F --draw-exif %s
 
 # PDF
-application/pdf; ~/.config/mutt/view_attachment.sh %s pdf
-application/x-latex; ~/.config/mutt/view_attachment.sh %s pdf
+#application/pdf; ~/.config/mutt/view_attachment.sh %s pdf
+application/pdf; evince %s
+#application/x-latex; ~/.config/mutt/view_attachment.sh %s pdf
 
 # Unidentified.
-application/octet-stream; ~/.config/mutt/view_attachment.sh %s "-" 
+#application/octet-stream; ~/.config/mutt/view_attachment.sh %s "-" 
 
 # MS Excel
 application/x-msexcel; ~/.config/mutt/view_attachment.sh %s xls
