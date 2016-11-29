@@ -134,6 +134,16 @@ set indent_string="> "
 
 set status_format="%_h:  [%r]  %f [total:%?M?%M/?%m%?n? new:%n?%?o? old:%o?%?d? del:%d?%?F? flag:%F?%?t? tag:%t?%?p? post:%p?%?b? inc:%b?%?l? %l?]       (%s/%S)%> [%P]   "
 
+# Sidebar
+#set sidebar_visible
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set mail_check_stats
+# Shorten mailbox names
+set sidebar_short_path
+# Delete everything up to the last / character
+set sidebar_delim_chars="/"
+bind index,pager B sidebar-toggle-visible
+
 # Hook for mail without sig
 send-hook @boards.trello.com   'set signature=""'
 send-hook @boards.trello.com   'set crypt_autosign=no'
