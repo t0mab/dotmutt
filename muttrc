@@ -147,6 +147,16 @@ bind index,pager B sidebar-toggle-visible
 # Hook for mail without sig
 send-hook @boards.trello.com   'set signature=""'
 send-hook @boards.trello.com   'set crypt_autosign=no'
+
+# Need mutt filters
+# https://github.com/terabyte/mutt-filters
+# RTFM mutt-filters' README for perl dependencies
+auto_view text/calendar
+alternative_order text/plain text/html text/*
+
+# Need mutt2khal 
+# https://raw.githubusercontent.com/pimutils/khal/master/misc/mutt2khal
+macro attach A "<pipe-message>vcalendar-filter | mutt2khal<enter>"
 # Notmuch search
 #macro index / "<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter>\
 #               <shell-escape>notmuch-mutt -r --prompt search<enter>\

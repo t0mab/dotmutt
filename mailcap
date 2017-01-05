@@ -35,3 +35,6 @@ application/vnd.ms-excel; ~/.config/mutt/view_attachment.sh %s xls
 
 # MS Word
 application/msword; ~/.config/mutt/view_attachment.sh %s doc
+
+# vcard
+text/calendar; ~/.config/mutt/vcalendar-filter; copiousoutput
