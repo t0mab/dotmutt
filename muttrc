@@ -23,8 +23,9 @@ bind pager <Up> previous-line
 bind pager <Down> next-line
 
 # Sorting shortcuts.
-macro index "xd" "<enter-command>set sort=reverse-last-date-received<enter>" "No thread view, sorting by reverse date"
-macro index "xt" "<enter-command>set sort=threads<enter>" "Thread view, sorting by reverse date"
+macro index "S" "<enter-command>set sort=reverse-last-date-received<enter>" "No thread view, sorting by reverse date"
+macro index "X" "<enter-command>set sort=threads<enter>" "Thread view, sorting by reverse date"
+
 
 # Sources general common aliases
 source ~/.config/mutt/general.aliases
@@ -142,7 +143,25 @@ set mail_check_stats
 set sidebar_short_path
 # Delete everything up to the last / character
 set sidebar_delim_chars="/"
+# Move the highlight to the previous mailbox
+bind index,pager <F8> sidebar-prev
+# Move the highlight to the next mailbox
+bind index,pager <F9> sidebar-next
+# Open the highlighted mailbox
+bind index,pager <F10> sidebar-open
+# Toggle sidebar visible
 bind index,pager B sidebar-toggle-visible
+# Move the highlight to the previous page
+# This is useful if you have a LOT of mailboxes.
+bind index,pager <F6> sidebar-page-up
+
+# Move the highlight to the next page
+# This is useful if you have a LOT of mailboxes.
+bind index,pager <F7> sidebar-page-down
+
+# Move the highlight to the previous mailbox containing new, or flagged,
+# mail.
+bind index,pager <F8> sidebar-prev-new
 
 # Hook for mail without sig
 send-hook @boards.trello.com   'set signature=""'
