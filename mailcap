@@ -18,20 +18,19 @@ image/gif; feh -F --draw-exif %s
 image/tiff; feh -F --draw-exif %s
 
 # PDF
-#application/pdf; ~/.config/mutt/view_attachment.sh %s pdf
 application/pdf; evince %s
 #application/x-latex; ~/.config/mutt/view_attachment.sh %s pdf
 
 # Unidentified.
-#application/octet-stream; ~/.config/mutt/view_attachment.sh %s "-" 
+#application/octet-stream; ~/.config/mutt/view_attachment.sh %s "-"
 
 # MS Excel
-application/x-msexcel; ~/.config/mutt/view_attachment.sh %s xls
-application/ms-exc; ~/.config/mutt/view_attachment.sh %s xls
-application/excel; ~/.config/mutt/view_attachment.sh %s xls
-application/msexcel; ~/.config/mutt/view_attachment.sh %s xls
-application/vnd.ms-exc; ~/.config/mutt/view_attachment.sh %s xls
-application/vnd.ms-excel; ~/.config/mutt/view_attachment.sh %s xls
+application/x-msexcel; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="Office Open XML Spreadsheet Template with Macros Enabled"; nametemplate=%s.xls
+application/ms-exc; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="Office Open XML Spreadsheet Template with Macros Enabled"; nametemplate=%s.xls
+application/excel;  libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="Office Open XML Spreadsheet Template with Macros Enabled"; nametemplate=%s.xls
+application/msexcel; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="Office Open XML Spreadsheet Template with Macros Enabled"; nametemplate=%s.xls
+application/vnd.ms-exc; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="Office Open XML Spreadsheet Template with Macros Enabled"; nametemplate=%s.xls
+application/vnd.ms-excel; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="Office Open XML Spreadsheet Template with Macros Enabled"; nametemplate=%s.xls
 
 # MS Word
 application/msword; ~/.config/mutt/view_attachment.sh %s doc
@@ -107,4 +106,3 @@ application/msword; libreoffice --nologo --writer '%s'; edit=libreoffice --nolog
 application/wordperfect; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; test=test -n "$DISPLAY"; description="WordPerfect Document"; nametemplate=%s.wp
 #text/plain; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; test=test -n "$DISPLAY"; description="Plain Text Document"; nametemplate=%s.txt
 text/rtf; libreoffice --nologo --writer '%s'; edit=libreoffice --nologo --writer '%s'; test=test -n "$DISPLAY"; description="Rich Text Format"; nametemplate=%s.rtf
-
