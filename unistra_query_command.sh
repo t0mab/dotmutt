@@ -10,10 +10,10 @@ username='baguet'
 uid=`echo "uid=$username,o=uds"`
 password=$(pass unistra/password)
 base='o=uds'
-host='ldap.unistra.fr'
+host='ldaps://ldap.unistra.fr'
 filter="(&(objectClass=udsEmployee)(|(cn=*$@*)(givenName=*$@*)(sn=*$@*)(mail=*$@*)))"
 
-status=`ldapsearch -h "$host" -w "$password" -D "$uid" -z $max -x -s one -l $timeout -b "$base" "$filter" 1.1 2>&1 | \\
+status=`ldapsearch -H "$host" -w "$password" -D "$uid" -z $max -x -s one -l $timeout -b "$base" "$filter" 1.1 2>&1 | \\
 
 grep -E '^(# )?(numResponses|numEntries|result|ldapsearch): '`
 echo $status
@@ -41,7 +41,7 @@ then
 fi
 
 
-addresses=`ldapsearch -h "$host" -w "$password" -D "$uid" -S $sort -LLL -z $max -x -s one -l $timeout -b "$base" -a search "$filter" mail cn telephoneNumber| \\
+addresses=`ldapsearch -H "$host" -w "$password" -D "$uid" -S $sort -LLL -z $max -x -s one -l $timeout -b "$base" -a search "$filter" mail cn telephoneNumber| \\
 awk -F: '{printf $2 ":"} {if ($2=="") {printf "\n"}}' | \\
 awk -F':' '{printf $2 "\t" $3 "\t" $4 "\n"}'`
 echo "$addresses"
