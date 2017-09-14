@@ -16,7 +16,7 @@ account-hook mailserver.u-strasbg.fr  "set imap_pass='$my_pass'"
 set spoolfile       = "+INBOX"
 set postponed       = "=INBOX.Brouillons"
 set mbox            = "=INBOX.Archives"
-set record          = "=INBOX.Envoyes"
+set record          = "=INBOX.Sent"
 #set trash           = "=INBOX.Corbeille"
 
 # Check all folders.
@@ -46,6 +46,7 @@ source ~/.config/mutt/smime.rc
 set signature="~/Maintenance/sig/.signature"
 
 # Query unistra ldap 
+#set query_command = "~/.config/mutt/mutt-ldap.pl '%s'"
 set query_command = "~/.config/mutt/unistra_query_command.sh '%s'"
 
 ## Aliases

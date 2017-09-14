@@ -1,7 +1,7 @@
 #text/html;                      ~/.config/mutt/view_attachment.sh %s html
 #text/html;                      elinks %s; nametemplate=%s.html
 #text/html;                      elinks -dump %s; nametemplate=%s.html; copiousoutput
-text/html; chromium %s & sleep 5; test=RunningX;
+text/html; chromium %s & sleep 5; test=test -n "$DISPLAY";
 text/html; w3m -I %{charset} -T text/html; nametemplate=%s.html; copiousoutput;
 # Images
 #image/jpg; ~/.config/mutt/view_attachment.sh %s jpg
@@ -33,7 +33,7 @@ application/vnd.ms-exc; libreoffice --nologo --calc '%s'; edit=libreoffice --nol
 application/vnd.ms-excel; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="Office Open XML Spreadsheet Template with Macros Enabled"; nametemplate=%s.xls
 
 # MS Word
-application/msword; ~/.config/mutt/view_attachment.sh %s doc
+# application/msword; ~/.config/mutt/view_attachment.sh %s doc
 
 # vcard
 text/calendar; ~/.config/mutt/vcalendar-filter; copiousoutput
