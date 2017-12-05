@@ -13,6 +13,7 @@ unset smime_ask_cert_label
 set smime_timeout=300
 
 # Global crypto options -- these affect PGP operations as well.
+set crypt_autosmime = yes
 set crypt_autosign = yes
 set crypt_replyencrypt = yes
 set crypt_replysign = yes
