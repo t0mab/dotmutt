@@ -6,8 +6,8 @@ source "gpg -dq ~/.config/mutt/gmail.passwords.gpg |"
 # don't record sent mail, Gmail does this
 unset record
 
-set my_smtp_user    = "baguet"
-set my_smtp_server  = "mailserver.u-strasbg.fr"
+set my_smtp_user    = "baguet@unistra.fr"
+set my_smtp_server  = "partage.unistra.fr"
 
 ## IMAP configuration.
 set from            = "$my_user"

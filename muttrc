@@ -36,7 +36,7 @@ folder-hook 'gmail.com' 'source ~/.config/mutt/gmail.muttrc'
 
 ## Work account.
 source ~/.config/mutt/unistra.muttrc
-folder-hook 'mailserver.u-strasbg.fr' 'source ~/.config/mutt/unistra.muttrc'
+folder-hook 'partage.unistra.fr' 'source ~/.config/mutt/unistra.muttrc'
 
 # Switch accounts
 macro index,pager <f4> '<enter-command>source ~/.config/mutt/unistra.muttrc<enter><change-folder>!<enter>'
