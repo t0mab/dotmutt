@@ -184,4 +184,6 @@ macro attach A "<pipe-message>vcalendar-filter | mutt2khal<enter>"
 #               <enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
 #               "notmuch: search mail"
 #
+#
+set new_mail_command="notify-send --icon='~/.icons/neomutt.png' 'Nouveau mail' '%n messages, %u non lus.' &"
 # vim: filetype=muttrc 
