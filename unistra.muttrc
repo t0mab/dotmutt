@@ -1,43 +1,17 @@
-#source "gpg -d ~/.config/mutt/unistra.password.gpg |"
-
 ## General configuration.
-set my_server       = "partage.unistra.fr"
-set my_user         = "baguet@unistra.fr"
-## Encrypted password
-source "gpg -dq ~/.config/mutt/unistra.passwords.gpg |"
-
-## IMAP configuration.
 set realname        = "BAGUET Thomas (DNUM)"
 set from            = "baguet@unistra.fr"
-set folder          = "imaps://$my_user@$my_server"
-account-hook partage.unistra.fr  "set imap_user='$my_user'"
-account-hook partage.unistra.fr  "set imap_pass='$my_pass'"
 
-set spoolfile       = "+INBOX"
-set postponed       = "=INBOX.Brouillons"
-set mbox            = "=INBOX.Archives"
-set record          = "=Sent"
-#set trash           = "=INBOX.Corbeille"
-
-# Check all folders.
-set imap_check_subscribed
-
-# Caching and such
-set message_cachedir='~/.config/mutt/cache/bodies'
-set header_cache = "~/.config/mutt/cache/headers"
-set certificate_file='~/.config/mutt/certificates'
-
-# Allow mutt to open new imap connection automatically.
-unset imap_passive
+set folder = $HOME/.mail/unistra
+set spoolfile = +Inbox
+set postponed = +Drafts
+set record = +Sent
+set sendmail = 'msmtp -a unistra'
+color status cyan default
 
 # How often to check for new mail
-set mail_check = 60
-set timeout = 15
-
-## SMTP configuration.
-set my_name         = "$realname"
-set smtp_url        = "smtps://$my_user:$my_pass@$my_server"
-set ssl_force_tls   = yes
+# set mail_check = 60
+# set timeout = 15
 
 # Configure smime
 source ~/.config/mutt/smime.rc

@@ -1,49 +1,55 @@
 ## General configuration.
-set my_server       = "imap.no-log.org"
-set my_user         = "tomass" 
-source "gpg -dq ~/.config/mutt/nolog.passwords.gpg |"
+# set my_server       = "imap.no-log.org"
+# set my_user         = "tomass" 
+# source "gpg -dq ~/.config/mutt/nolog.passwords.gpg |"
 
-set my_smtp_user    = "tomass"
-set my_smtp_server  = "smtp.no-log.org"
+set from = tomass@no-log.org
+set realname = "T0mAss|Ace"
+set folder = $HOME/.mail/nolog
+set spoolfile = +Inbox
+set postponed = +Drafts
+set record = +Sent
+set sendmail = 'msmtp -a nolog'
+
+# set my_smtp_user    = "tomass"
+# set my_smtp_server  = "smtp.no-log.org"
 
 ## IMAP configuration.
-set from            = "$my_user"
-set folder          = "imaps://$my_user@$my_server"
+# set from            = "$my_user"
+# set folder          = "imaps://$my_user@$my_server"
 #set imap_user       = $my_user
 #set imap_pass       = $my_pass
-account-hook imap.no-log.org "set imap_user='$my_user'"
-account-hook imap.no-log.org  "set imap_pass='$my_pass'"
-
-set spoolfile       = +INBOX
+# account-hook imap.no-log.org "set imap_user='$my_user'"
+# account-hook imap.no-log.org  "set imap_pass='$my_pass'"
 ##set postponed       = "+[Gmail]/Brouillons"
 #set mbox            = "=Archives"
 ##set record          = "+[Gmail]/Messages envoyés"
 #set trash           = "=Deleted Messages"
 
 # Check all folders.
-set imap_check_subscribed
+# set imap_check_subscribed
 
-# Store message headers locally to speed things up.
-set header_cache = ~/.config/mutt/cache/mutt
+# # Store message headers locally to speed things up.
+# set header_cache = ~/.config/mutt/cache/mutt
 
 # Mail signature
 #set signature = ~/Maintenance/sig/.signature.gmail
 
 
 # Allow mutt to open new imap connection automatically.
-unset imap_passive
+# unset imap_passive
 
 # How often to check for new mail
 set mail_check = 120 
 set timeout = 15
 
 # Keep IMAP connection alive by polling intermittently (time in seconds).
-set imap_keepalive = 300
+# set imap_keepalive = 300
 
 ## SMTP configuration.
 set my_name         = "ToMaSs"
-set smtp_url        = "smtps://$my_smtp_user:$my_pass@$my_smtp_server"
-set ssl_force_tls   = yes
+# set smtp_url        = "smtps://$my_smtp_user:$my_pass@$my_smtp_server"
+# set ssl_force_tls   = yes
 
 
 

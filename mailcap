@@ -13,12 +13,12 @@ text/html; w3m -I %{charset} -T text/html; nametemplate=%s.html; copiousoutput;
 image/jpeg; feh -F --draw-exif %s
 image/jpg; feh -F --draw-exif %s
 image/png; feh -F --draw-exif %s
-image/jgpeg; feh -F --draw-exif %s
 image/gif; feh -F --draw-exif %s
-image/tiff; feh -F --draw-exif %s
+image/tiff; feh -F --draw-exif %
+
 
 # PDF
-application/pdf; evince %s
+application/pdf; zathura %s
 #application/x-latex; ~/.config/mutt/view_attachment.sh %s pdf
 
 # Unidentified.

@@ -1,58 +1,28 @@
 ## General configuration.
-set my_server       = "imap.gmail.com"
-set my_user         = "thomas.baguet@gmail.com" 
-source "gpg -dq ~/.config/mutt/gmail.passwords.gpg |"
+
+set from = thomas.baguet@gmail.com
+set realname = "Thomas Baguet"
+set folder = $HOME/.mail/gmail
+set spoolfile = +Inbox
+set postponed = +Drafts
+set record = +Sent
+set sendmail = 'msmtp -a gmail'
+color status blue default
 
 # don't record sent mail, Gmail does this
 unset record
 
-set my_smtp_user    = "baguet@unistra.fr"
-set my_smtp_server  = "partage.unistra.fr"
-
-## IMAP configuration.
-set from            = "$my_user"
-set folder          = "imaps://$my_user@$my_server"
-#set imap_user       = $my_user
-#set imap_pass       = $my_pass
-account-hook gmail.com  "set imap_user='$my_user'"
-account-hook gmail.com  "set imap_pass='$my_pass'"
-
-set spoolfile       = +INBOX
-set postponed       = "+[Gmail]/Brouillons"
-#set mbox            = "=Archives"
-set record          = "+[Gmail]/Messages envoyés"
-#set trash           = "=Deleted Messages"
-
-# Check all folders.
-set imap_check_subscribed
-
-# Store message headers locally to speed things up.
-set header_cache = ~/.config/mutt/cache/mutt
-
 # Mail signature
 set signature = ~/Maintenance/sig/.signature.gmail
 
-
-# Allow mutt to open new imap connection automatically.
-unset imap_passive
-
 # How often to check for new mail
-set mail_check = 120 
-set timeout = 15
-
-# Keep IMAP connection alive by polling intermittently (time in seconds).
-set imap_keepalive = 300
-
-## SMTP configuration.
-set my_name         = "Thomas BAGUET"
-set smtp_url        = "smtps://$my_smtp_user:$my_smtp_pass@$my_smtp_server"
-set ssl_force_tls   = yes
+# set mail_check = 120 
+# set timeout = 15
 
 ## Goobook (Google contacts)
 set query_command = "goobook query '%s'"
 bind editor <Tab> complete-query
 macro index,pager a "<pipe-message>goobook add<return>" "Add contact to Google"
-
 
 ## Pgp stuff
 unset smime_is_default

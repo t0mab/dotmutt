@@ -1,6 +1,5 @@
-## Cache
-set header_cache=~/.cache/mutt/headers
-set message_cachedir=~/.cache/mutt/bodies
+## Misc
+set tmpdir = /tmp/mutt
 
 ## Sort
 # Sort mails by thread and reverse date by default.
@@ -12,7 +11,10 @@ set sort_browser=alpha
 # 15 lines for page view mode
 set pager_index_lines=15
 set pager_stop
+set pager_context = 3
 set smart_wrap
+set menu_scroll
+set tilde
 
 ## Bindings
 # Refresh mails
@@ -26,22 +28,30 @@ bind pager <Down> next-line
 macro index "S" "<enter-command>set sort=reverse-last-date-received<enter>" "No thread view, sorting by reverse date"
 macro index "X" "<enter-command>set sort=threads<enter>" "Thread view, sorting by reverse date"
 
-
 # Sources general common aliases
 source ~/.config/mutt/general.aliases
 
 ### Multi mailbox configuration
 ## Personal account.
-folder-hook 'gmail.com' 'source ~/.config/mutt/gmail.muttrc'
+# folder-hook 'gmail.com' 'source ~/.config/mutt/gmail.muttrc'
 
 ## Work account.
 source ~/.config/mutt/unistra.muttrc
-folder-hook 'partage.unistra.fr' 'source ~/.config/mutt/unistra.muttrc'
+folder-hook 'unistra' 'source ~/.config/mutt/unistra.muttrc'
+
+# # Nolog account
+# source ~/.config/mutt/nolog.muttrc
+# folder-hook 'nolog' 'source ~/.config/mutt/nolog.muttrc'
+
+# Switch between accounts
+
+macro index <F1> '<sync-mailbox><enter-command> source ~/.config/mutt/unistra.muttrc<enter><change-folder>!<enter>'
+macro index <F2> '<sync-mailbox><enter-command> source ~/.config/mutt/gmail.muttrc<enter><change-folder>!<enter>'
+macro index <F3> '<sync-mailbox><enter-command> source ~/.config/mutt/nolog.muttrc<enter><change-folder>!<enter>'
 
 # Switch accounts
-macro index,pager <f4> '<enter-command>source ~/.config/mutt/unistra.muttrc<enter><change-folder>!<enter>'
-macro index,pager <f3> '<enter-command>source ~/.config/mutt/gmail.muttrc<enter><change-folder>!<enter>'
-macro index,pager <f5> '<enter-command>source ~/.config/mutt/nolog.muttrc<enter><change-folder>!<enter>'
+# macro index,pager <F4> '<enter-command>source ~/.config/mutt/unistra.muttrc<enter><change-folder>!<enter>'
+# macro index,pager <F5> '<enter-command>source ~/.config/mutt/nolog.muttrc<enter><change-folder>!<enter>'
 
 # View url with fav browser
 macro pager \cu <pipe-entry>'urlview'<enter> 'Follow links with urlview'
@@ -134,12 +144,11 @@ set mailcap_path = ~/.config/mutt/mailcap
 set recall=no           # don't ask to recall postponed mails
 set indent_string="> "
 
-set status_format="%_h:  [%r]  %f [total:%?M?%M/?%m%?n? new:%n?%?o? old:%o?%?d? del:%d?%?F? flag:%F?%?t? tag:%t?%?p? post:%p?%?b? inc:%b?%?l? %l?]       (%s/%S)%> [%P]   "
-
 # Sidebar
-#set sidebar_visible
+# set sidebar_visible
 set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
 set mail_check_stats
+set sidebar_new_mail_only	
 # Shorten mailbox names
 set sidebar_short_path
 # Delete everything up to the last / character
@@ -163,6 +172,10 @@ bind index,pager <F7> sidebar-page-down
 # Move the highlight to the previous mailbox containing new, or flagged,
 # mail.
 bind index,pager <F8> sidebar-prev-new
+
+set status_chars = ' *%A'
+set status_format="%_h:  [%r]  %f [total:%?M?%M/?%m%?n? new:%n?%?o? old:%o?%?d? del:%d?%?F? flag:%F?%?t? tag:%t?%?p? post:%p?%?b? inc:%b?%?l? %l?]       (%s/%S)%> [%P]   "
+set date_format = "%d.%m.%Y %H:%M"
 
 # Hook for mail without sig
 send-hook @boards.trello.com   'set signature=""'
