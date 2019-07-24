@@ -9,10 +9,6 @@ set record = +Sent
 set sendmail = 'msmtp -a unistra'
 color status cyan default
 
-# How often to check for new mail
-# set mail_check = 60
-# set timeout = 15
-
 # Configure smime
 source ~/.config/mutt/smime.rc
 

@@ -1,25 +1,17 @@
-#text/html;                      ~/.config/mutt/view_attachment.sh %s html
-#text/html;                      elinks %s; nametemplate=%s.html
-#text/html;                      elinks -dump %s; nametemplate=%s.html; copiousoutput
+# Html
 text/html; chromium %s & sleep 5; test=test -n "$DISPLAY";
 text/html; w3m -I %{charset} -T text/html; nametemplate=%s.html; copiousoutput;
+
 # Images
-#image/jpg; ~/.config/mutt/view_attachment.sh %s jpg
-#image/jpeg; ~/.config/mutt/view_attachment.sh %s jpg
-#image/pjpeg; ~/.config/mutt/view_attachment.sh %s jpg
-#image/png; ~/.config/mutt/view_attachment.sh %s png
-#image/gif; ~/.config/mutt/view_attachment.sh %s gif
-#image/tiff; ~/.config/mutt/view_attachment.sh %s gif
 image/jpeg; feh -F --draw-exif %s
 image/jpg; feh -F --draw-exif %s
 image/png; feh -F --draw-exif %s
 image/gif; feh -F --draw-exif %s
 image/tiff; feh -F --draw-exif %
 
-
 # PDF
 application/pdf; zathura %s
-#application/x-latex; ~/.config/mutt/view_attachment.sh %s pdf
+application/x-latex; zathura %s
 
 # Unidentified.
 #application/octet-stream; ~/.config/mutt/view_attachment.sh %s "-"
@@ -32,12 +24,8 @@ application/msexcel; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo
 application/vnd.ms-exc; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="Office Open XML Spreadsheet Template with Macros Enabled"; nametemplate=%s.xls
 application/vnd.ms-excel; libreoffice --nologo --calc '%s'; edit=libreoffice --nologo --calc '%s'; test=test -n "$DISPLAY"; description="Office Open XML Spreadsheet Template with Macros Enabled"; nametemplate=%s.xls
 
-# MS Word
-# application/msword; ~/.config/mutt/view_attachment.sh %s doc
-
 # vcard
 text/calendar; ~/.config/mutt/vcalendar-filter; copiousoutput
-
 
 # LibreOffice stuff
 application/vnd.oasis.opendocument.database; libreoffice --nologo --base '%s'; edit=libreoffice --nologo --base '%s'; test=test -n "$DISPLAY"; description="OpenDocument Database"; nametemplate=%s.odb

@@ -51,8 +51,6 @@ set my_name         = "ToMaSs"
 # set smtp_url        = "smtps://$my_smtp_user:$my_pass@$my_smtp_server"
 # set ssl_force_tls   = yes
 
-
-
 ## Pgp stuff
 unset smime_is_default
 set pgp_decode_command="gpg %?p?--passphrase-fd 0? --no-verbose --batch --output - %f"
